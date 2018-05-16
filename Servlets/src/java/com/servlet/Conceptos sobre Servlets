@@ -1,0 +1,102 @@
+Basicamene son los que procesan los request del cliente de la capa cliente hacia la capa web
+y si es valida ej, este recupera algo de la capa de datos y lo devuelve, response a la capa cliente.
+
+Ya sean lo que sean
+
+Funciones de un servlets, sera para controlar el flujo de una app web
+en MVC juega el papel de un controlador. 
+
+MVC:  Visualiza informacion de un JSP o HTML, uan vez eso realiza una peticion y la procesa el Servlet y post se apoya de 
+la informaicon de negocio de modelo. 
+
+JavaBean, es quien contiene estos datos, y luego el servlet decide que jsp o html se desplegara.
+Separar las responsabilidades!
+
+
+Metodos de los Servlets con HTTP
+Get envia informacion del cliente hacia ewl servidor por medio de la URL(parametros)
+
+POST envia info por el cuerpo del mensaje no en el URL
+
+son 8
+
+options
+get
+head
+post
+put
+delete
+trace
+connect
+
+
+Ciclo de vida de un Servlet:
+
+Extiende de HTTPServlet
+
+1. Compila y carga la clase en la JVM
+2. Se crea una nueva instanmcia del servlet, osea se genera un hilo de la clase en memoria, cada vez que se hace una peticion\
+3. Se llama el metodo init() equivalente a un constructor, se ejcuta solo la 1era vez
+4. Se ejecuta el metodo service(), es el que s encarga indirectamente para llamar uno de los 8 metodos anteriores.
+5. Se ejecuta el metodo destroy(), equivale al finalize(), destruye la clase servlet.
+
+
+
+
+Request Headers o cabeceros de peticion
+
+Los cabeceros de peticion no spermiten obtener metadatos de la peticion HTTP
+
+el metodo utilizado ya se ael get, post etc.
+la ip de la maquiina
+el dominio del equipo
+el recurso solicitado 
+el navegador utilizado
+y varios mas....
+
+La idea es como procesar los cabeceros
+
+Metodos para procesar las peticiones
+
+HTTPServletRequest
+getrHeader(), uno solo
+getHeaders(), varios
+getHeaderNames(), los nombres
+
+Metodo con informacion relativa al contexto
+getMethod(), referente a los 8
+getRequestURI()
+getQueryString(), los que vienen por la peticion get
+getProtocol(), nos dice el protocolo utilizado.
+
+otros...
+getCookies(), guardar info del usuario.
+getAuthType() y getRemoteUser(), nos ayudan a procesar la seguridad en los JSP
+getContentLenght()
+getContentType()
+getDateHeader()
+getIntHeader()
+
+
+
+    ESTADOS 
+los metodos sgts nos permiten indicar el codigo de respuesta del servidor web alcliente
+
+response.setStatus(int condigo)
+SC_OK, SC_NOT_FOUND
+
+response.sendError(int codigo, String mensaje)
+mostrar un error en un doc HTML
+
+response.sendRedirect(String url)
+redirrecionar al cliente a otra pagina.
+
+
+200 es OK,
+204 sin contenido, despliega el contenido previo
+301 movido permanentemente, se indica nueva ruta, 
+302 encontrado el doc se ha movido temp y el nav se mueve auto
+401 sin autorizacion no se tiene permisos para visualizar
+403 el servidor ha sido tumbado
+404 no encontrado
+500 error interno del servidor web.
