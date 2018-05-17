@@ -1,0 +1,69 @@
+Mejores practicas para los JSP
+
+
+Las funciones del jsp dentro del MVC
+    Sirve como la vista, o componente de presentacion. 
+    mostrar la info recibida del servlet, o enviar info a lops sevlets
+
+Ciclo de vida de los JSP
+similar a los de os Servlets
+la unica diferencia es que los 1. se traduce a Servlet, y de ahi tendra el mismo
+ciclo de vida del servlet.
+
+Expressions
+
+Sintaxis
+<%= expression%> debe regresar al gun resultado/
+la expresion se evalua y se inserta en la salida del servlet
+
+Scriptlets: Sintaxis:
+Demasiado codigo en un scriptlet es de mala practica
+
+<% codigo java %>, todo el codigo se inmserta dentro del metodo service() del servlet generado 
+
+Declaraciones: sintaxis
+<%! codigo java %>, tambien es codigo java, pero este codigo se usa para variables y metodos
+                    en este caso si declaramos una variable se vuelve una variable de la instancia y no
+                    una local. Tambien los metodos por igual.
+
+XML
+JSPX:: cada elmento jsp tiene su equivalente en xml
+
+
+Variables Implicitas en los JSP
+
+podemos utilizar objetos ya instanciados como
+request, response, out(JspWriter), session, se puede deshabilitar el uso de seisones en jsp,
+application(getServletContext())
+
+  
+Directivas
+
+Atributo de import en la directiva page
+
+<%@ page import="paquete.Clase1 , paquete.ClaseN" %>
+Atributo ContentType
+
+<%@ page contentType="MIME-Type" %>
+
+Atributo session:, para que no acceda a los http sesion
+<%@ page session="false"%>
+
+Atributo isELIgnored, desactivar los expression languega
+<%@ page isELIgnored="false %">
+
+Atributo buffer, especificamos el tamano en kilobytes
+<%@ page buffer="tamañoEnKb"%>
+
+Atributo errorPage:
+<%@ page errorPage="url relativo del JSP de error"%>
+
+Atributo para el JSP de error
+isErrorPage:
+<%@ page isErrorPage="true"%>
+
+Atributo isThreadSafe: qu es seguro que acceda por multipleHilos
+<%@ page isThreadSafe="true or false"%>
+
+Atributo extends para heredar!
+<%@ page extends="paquete.NombreClase"%>

@@ -100,3 +100,33 @@ redirrecionar al cliente a otra pagina.
 403 el servidor ha sido tumbado
 404 no encontrado
 500 error interno del servidor web.
+
+El protocolo HTTP, es un protocolo que no tiene estado, por lo que el usuario envie no se guarda
+UNa SeSSION se usa para admn distintas peticiones de los usuarios, Una sesion tiene una vida mas larga que una peticion
+o lo mismo una request. Hay que asignarle un tiempo limite.
+
+Manejo de Sesiones con servlets
+
+request.getSession(), para obtener el objeto httpSession que se creo por el request del cliente.
+
+session.getAttribute(), la sesion se creada se asocia con un usuario, este metodo obntenemos un atributo previamente
+agregado a la sesion del cliente
+
+session.setAttribute(), permite agregar nueva info al cliente.
+
+Leer y agregar info a la sesion\
+
+session.removeAttribute(), quitar info
+
+session.invalidate(), invalida sessiones
+
+sesion.isNew(), si fue creada recientemente (true or false).
+
+sesion.getCreatinTime(), cuando fue creada
+sesion.getLastAccesedTime(), laultima vez que el cliente ingreso
+sesion.getMaxInactiveInterval(), tiempo de inactividad en seg, para que se destruya si no recibe nada del cliente (request)
+sesion.setMaxInactiveInterval(), modificar el tiempo que de inactividad del cliente.
+
+el protocolo http es de tipo styles es decir no guarda info del cliente. 
+Si no usamos httpsesion no los recordaria, pero ahora si.
+
